@@ -1,0 +1,122 @@
+/* Inherits variables from :root in styles.css */
+
+.resume-container {
+  padding: 2rem 3rem; /* Add padding around the whole resume */
+  background-color: var(--primary-bg); /* Ensure background matches */
+  color: var(--primary-text); /* Ensure base text color matches */
+  max-width: 900px; /* Limit width for better readability on large screens */
+  margin: 2rem auto; /* Center the container */
+  border-radius: 8px; /* Optional: slightly rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.resume-section {
+  margin-bottom: 2rem; /* Space between sections */
+  padding-bottom: 1.5rem; /* Space before the border */
+  border-bottom: 1px solid var(--secondary-bg); /* Subtle separator line */
+}
+
+.resume-section:last-child {
+  border-bottom: none; /* No border for the last section */
+  margin-bottom: 0;
+}
+
+.resume-section h2 {
+  color: var(--primary-text); /* Use primary text color for main headings */
+  margin-bottom: 1rem;
+  font-size: var(--font-size-large);
+  border-bottom: 2px solid var(--highlight-color); /* Highlight heading */
+  padding-bottom: 0.3rem;
+  display: inline-block; /* Keep border only under text */
+}
+
+.resume-section h3 {
+  color: var(--primary-text);
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-medium);
+  font-weight: bold;
+}
+
+.resume-section p,
+.resume-section ul {
+  color: var(--secondary-text); /* Use secondary text for details */
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.resume-section ul {
+  list-style: disc; /* Standard bullet points */
+  padding-left: 20px; /* Indent list items */
+}
+
+.resume-section li {
+  margin-bottom: 0.5rem; /* Space between list items */
+}
+
+.job-entry,
+.education-entry,
+.project-entry {
+  margin-bottom: 1.5rem; /* Space between entries within a section */
+}
+
+.job-entry p strong,
+.education-entry p strong {
+  color: var(--primary-text); /* Make company/university names stand out slightly */
+}
+
+.skill-category {
+  margin-bottom: 1rem;
+}
+
+.skill-category h3 {
+  font-size: var(--font-size-medium);
+  font-weight: bold;
+  color: var(--primary-text);
+  margin-bottom: 0.5rem;
+}
+
+.skill-category ul {
+  list-style: none; /* Remove default bullets for skills */
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem; /* Spacing between skill tags */
+}
+
+.skill-category li {
+  background-color: var(--tag-bg); /* Use tag background from theme */
+  color: var(--tag-text); /* Use tag text color from theme */
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: var(--font-size-small);
+  margin-bottom: 0.5rem; /* Consistent margin */
+}
+
+/* Style links */
+a {
+  color: var(--highlight-color); /* Use highlight color for links */
+  text-decoration: underline;
+  transition: color var(--transition-speed);
+}
+
+a:hover,
+a:focus {
+  color: var(--hover-accent); /* Use a slightly darker accent on hover */
+  text-decoration: none;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 768px) {
+  .resume-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .resume-section h2 {
+    font-size: 1.4rem; /* Adjust heading size */
+  }
+
+  .resume-section h3 {
+     font-size: 1.1rem;
+  }
+}

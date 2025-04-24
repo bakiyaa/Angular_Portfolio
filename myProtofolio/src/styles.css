@@ -4,8 +4,20 @@
 }
 
 :root {
-  --primary-color: #e2e8f0; /* Light slate color */
-  --hover-color: #d1dbe5; /* Slightly brighter color for hover states */
+  /* Pastel Palette */
+  --primary-bg: #fdf6f6;      /* Very light pink/off-white */
+  --secondary-bg: #f0e0e6;    /* Light pastel pink */
+  --primary-text: #5c5c5c;    /* Dark grey for good contrast */
+  --secondary-text: #8c7a7f;  /* Slightly lighter grey/muted pink */
+  --accent-color: #f8c8dc;    /* Pastel pink accent */
+  --hover-bg: #e8d8de;        /* Slightly darker hover for backgrounds */
+  --hover-accent: #e0b4ca;    /* Slightly darker hover for accents */
+  --highlight-color: #a6d1e6; /* Pastel blue for highlights */
+  --tag-bg: #e6e0f0;          /* Light pastel lavender for tags */
+  --tag-text: #7a6c8c;        /* Darker lavender for tag text */
+  --tag-hover-bg: #d8cfe4;    /* Slightly darker hover for tags */
+
+  /* Font Sizes (unchanged) */
   --font-size-small: 0.85rem;
   --font-size-medium: 1rem;
   --font-size-large: 1.25rem;
@@ -17,8 +29,11 @@
 body {
   font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
-  background-color: #0a192f;
-  color: #ccd6f6;
+  background-color: var(--primary-bg); /* Base color */
+  /* Subtle pattern using radial gradients */
+  background-image: radial-gradient(rgba(240, 224, 230, 0.3) 1px, transparent 1px); /* Using secondary-bg with low alpha */
+  background-size: 12px 12px; /* Adjust size for pattern density */
+  color: var(--primary-text);
   font-size: 16px;
   margin: 0;
   height: 100vh; 
@@ -27,26 +42,30 @@ body {
 
 h1, h2 {
   margin-bottom: 1rem;
-  color: #e6f1ff;
+  color: var(--primary-text); /* Use primary text color */
 }
 
 p {
   font-size: 1rem;
-  color: #8f98b0;
+  color: var(--secondary-text); /* Use secondary text color */
   line-height: 1.8;
 }
 
+/* Global link styling */
 a {
+  color: var(--highlight-color); /* Default link color */
   text-decoration: none; /* Removes underline by default */
+  transition: color var(--transition-speed);
 }
 
 a:hover,
 a:focus {
+  color: var(--hover-accent); /* Link hover color */
   text-decoration: none; /* Ensures no underline on hover or focus */
 }
 
 b{
-  color: #ccd6f6;
+  color: var(--primary-text); /* Use primary text color for emphasis */
 }
 
 #exp {
@@ -60,11 +79,11 @@ b{
 
 /* Individual job entry as block */
 .card {
-  background-color:  #0c1e39; /* Slightly lighter block background */
+  background-color: var(--secondary-bg); /* Use secondary pastel background */
   padding: 1rem;
   border-radius: 0.625rem; /* 10px to rem */
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.2); /* 2px, 5px to rem */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Lighter shadow */
   display: flex;
   flex-direction: column;  /* Stack the items vertically on smaller screens */
 }
@@ -73,27 +92,27 @@ b{
   font-weight: bold;
   display: flex;
   margin: 10px 0;
-  gap: 5px; 
+  gap: 5px;
   flex-direction: row;  /* Stack the items vertically on smaller screens */
-  color: #ffffff; /* White text on hover */
+  color: var(--primary-text); /* Use primary text color */
 }
 
 /* Hover effect for individual blocks */
 .card:hover {
-  background-color: #192d51; /* Slightly lighter background on hover */
-  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.3); /* 4px, 20px to rem */
+  background-color: var(--hover-bg); /* Use hover background color */
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1); /* Adjusted shadow for lighter theme */
 }
 
 .card p .highlight {
   font-weight: bolder;
-  color: #38bdf8; /* Highlighted blue */
+  color: var(--highlight-color); /* Use pastel highlight color */
 }
 
 .description{
   color: var(--font-size-small);
   font-size: var(--font-size-medium);
   line-height: 1.5rem;
-  color: #8f98b0;
+  color: var(--secondary-text); /* Use secondary text color */
 }
 
 .card p span {
@@ -104,7 +123,7 @@ b{
 
 /* Tech stack container */
 .tech-stack {
-  color: #ffffff; /* White text on hover */
+  /* color: var(--primary-text); */ /* Inherits from parent, no need to set explicitly */
   margin-top: 0.625rem; /* 10px to rem */
   display: flex;
   gap: 0.625rem; /* 10px to rem */
@@ -114,9 +133,9 @@ b{
 
 /* Individual tech tags */
 .tech-stack span {
-  background-color: #1c2944;
-  box-shadow: inset 0 2px 5px rgba(6, 87, 105, 0.2); /* Inner shadow */
-  color: #38bdf8;
+  background-color: var(--tag-bg); /* Use tag background color */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Adjusted shadow for lighter theme */
+  color: var(--tag-text); /* Use tag text color */
   padding: 0.5rem 0.75rem; /* 8px, 12px to rem */
   border-radius: 0.5rem; /* 20px to rem */
   font-weight: var(--font-size-small);
@@ -125,9 +144,9 @@ b{
 
 /* Tag hover effect */
 .tech-stack span:hover {
-  box-shadow: inset 0 2px 5px rgba(6, 87, 105, 0.2); /* Inner shadow */
-  background-color: #093872; /* Brighter blue on hover */
-  transform: scale(1.1);
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
+  background-color: var(--tag-hover-bg); /* Use tag hover background */
+  transform: scale(1.05); /* Slightly reduced scale for subtlety */
 }
 
 /* Responsiveness */

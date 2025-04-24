@@ -1,8 +1,9 @@
 .footer{
   text-align: right;
-  border-top: 2px solid #343a40;
+  border-top: 1px solid var(--secondary-bg); /* Use theme variable, made border thinner */
   font-size: smaller;
   padding: 1rem;
+  color: var(--secondary-text); /* Set text color to match theme */
 }
 
 #designConcept{
