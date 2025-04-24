@@ -1,0 +1,9 @@
+<section id="exp">
+  <div *ngFor="let job of experiences"  class="card">
+    <p class="card-header"><span>{{ job.duration }}</span><span class="highlight">{{ job.role }} · {{ job.company }}</span></p>
+    <p class="description">{{ job.description }}</p>
+    <div class="tech-stack">
+      <span *ngFor="let tech of job.techStack">{{ tech }}</span>
+    </div>
+  </div>
+</section>

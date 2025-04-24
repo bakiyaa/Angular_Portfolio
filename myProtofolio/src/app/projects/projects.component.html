@@ -1,0 +1,10 @@
+<section class="content-section" id="exp">
+  <div  class="card" *ngFor="let project of projects">
+    <p class="card-header"><span>{{ project.techHeader }}</span><span class="highlight" >{{ project.title }}</span></p>
+    <p class="description">{{ project.description }}</p>
+    <div class="tech-stack">
+      <span *ngFor="let tech of project.techStack">{{ tech }}</span>
+  </div>
+   <!--<a [href]="project.link" target="_blank">View Project</a>-->
+  </div>
+</section>
