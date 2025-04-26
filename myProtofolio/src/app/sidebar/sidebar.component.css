@@ -2,10 +2,10 @@
   font-size: var(--font-size-xlarge); /* Equivalent to text-4xl */
   font-weight: bolder; /* Equivalent to font-bold */
   letter-spacing: -0.08em; /* Equivalent to tracking-tight */
-  color: var(--primary-text); /* Use theme variable */
+  color: #e2e8f0; /* Equivalent to text-slate-200 */
   border-width: 2rem;
-  border: 0 solid #e5e7eb; /* Consider changing this border color too if needed */
-  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow for pastel theme */
+  border: 0 solid #e5e7eb;
+  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
@@ -24,8 +24,8 @@
   font-weight: var(--font-size-large); /* Slightly bolder for emphasis */ /* Space between role and description */
   letter-spacing: 0.015em; /* Slightly wider for readability */
   font-size: 1.25rem;
-  font-weight: bolder;
-  color: var(--primary-text); /* Use theme variable (removed invalid --primary-color) */
+  font-weight: bolder; 
+  color: var(--primary-color);/* Increased font size */
 }
 
 /* How Can I Help Section */
@@ -67,7 +67,7 @@
   font-weight: bold; /* font-bold */
   text-transform: uppercase; /* uppercase */
   letter-spacing: 0.3em; /* tracking-widest */
-  color: var(--secondary-text); /* Use theme variable */
+  color: #f0f4f8; /* Off-white but brighter */
   display: inline-block;
   position: relative;
   padding-left: 50px;  /* Space between line and text */
@@ -82,26 +82,26 @@
   transform: translateY(-50%);
   width: 30px; /* Default line length */
   height: 1px; /* Line thickness */
-  background-color: var(--secondary-text); /* Use theme variable */
+  background-color: #e2e8f0; /* Light grey line */
   transition: width 0.3s ease, background-color 0.3s ease; /* Smooth line animation */
 }
 
 .custom-link:hover:before,
 .custom-link:focus:before {
   width: 50px; /* Elongate line on hover/focus */
-  background-color: var(--primary-text); /* Use theme variable */
+  background-color: #d1dbe5; /* Slightly brighter line color on hover */
 }
 
 .custom-link:hover,
 .custom-link:focus {
   font-size: 1.22rem; /* Slightly larger font size (2% increase) */
   padding-left: 55px; /* Move text along with the elongating line */
-  color: var(--primary-text); /* Use theme variable */
+  color: #d1dbe5; /* Slightly brighter text color on hover */
 }
 
 .custom-link:active:before {
   width: 70px; /* Further elongate line on click */
-  background-color: var(--primary-text); /* Use theme variable */
+  background-color: #d1dbe5;
 }
 
 .custom-link:active {
@@ -118,7 +118,7 @@
 .footer-icons a {
   text-decoration: none; /* Remove underline from links */
   font-size: 1rem; /* Default font size for link text */
-  color: var(--secondary-text); /* Use theme variable */
+  color: #f0f4f8; /* Off-white color for text and icons */
   display: flex; /* Use flexbox for stacking icon and text */
   flex-direction: column; /* Stack icon above the text */
   align-items: center; /* Center-align icon and text */
@@ -126,7 +126,7 @@
 }
 
 .footer-icons a:hover {
-  color: var(--primary-text); /* Use theme variable */
+  color: #d1dbe5; /* Slightly brighter color on hover */
 }
 
 .footer-icons i {

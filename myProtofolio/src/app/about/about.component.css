@@ -3,8 +3,29 @@
    padding: 2rem;
 }
 
-/* Removed .resume-link styles as the element is no longer used */
+.resume-link {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #d2e1eb;  /* Link color */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+.resume-link .arrow {
+  margin-left: 8px;
+  font-size: 1.5rem;
+  display: inline-block;
+  transform: rotate(-45deg);  /* Rotate the arrow 45 degrees */
+}
 
+.resume-link:hover {
+  color: #ffffff;  /* Hover effect color */
+}
+
+.resume-link:hover .arrow {
+  transform: rotate(-45deg) translateX(-5px);  /* Keep the 45-degree rotation and add a small movement */
+}
 .intro{
     margin: auto;
 }

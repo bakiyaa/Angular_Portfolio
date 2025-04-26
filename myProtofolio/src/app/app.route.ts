@@ -3,7 +3,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ExperienceComponent } from './experience/experience.component';
 import { AboutComponent } from './about/about.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { ResumeComponent } from './resume/resume.component'; // Import the new component
+// ResumeComponent import removed
 
 export enum  ROUTER_TOKENS{
   HOME='home',
@@ -11,8 +11,8 @@ export enum  ROUTER_TOKENS{
   ABOUT='about',
   CONTACT='contact',
   PROJECT='projects',
-  SIDEBAR='sidebar',
-  RESUME='resume' // Add token for the new route
+  SIDEBAR='sidebar'
+  // RESUME token removed
 }
 
 export const routes: Routes = [
@@ -35,10 +35,7 @@ export const routes: Routes = [
     {
       path:ROUTER_TOKENS.PROJECT,
       component : ProjectsComponent,
-    },
-    {
-      path: ROUTER_TOKENS.RESUME, // Use the token for the path
-      component: ResumeComponent  // Route to the new component
     }
+    // Cleaned up duplicated route and leftover comment
     //NotFoundComponent
 ];
