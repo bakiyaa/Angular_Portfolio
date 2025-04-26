@@ -36,18 +36,18 @@ p {
   line-height: 1.8;
 }
 
-a {
-  text-decoration: none; /* Removes underline by default */
-}
+/* a { */
+  /* text-decoration: none; /* Use Tailwind's `no-underline` class instead */
+/* } */
 
-a:hover,
-a:focus {
-  text-decoration: none; /* Ensures no underline on hover or focus */
-}
+/* a:hover, */
+/* a:focus { */
+  /* text-decoration: none; /* Tailwind handles hover/focus states */
+/* } */
 
-b{
-  color: #ccd6f6;
-}
+/* b{ */
+  /* color: #ccd6f6; /* Use Tailwind's `text-slate-200` or similar text color utility */
+/* } */
 
 #exp {
   padding: 2rem;

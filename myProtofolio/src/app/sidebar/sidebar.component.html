@@ -3,16 +3,16 @@
   <header class="hero">
     <!-- app.component.html -->
     <!-- <div class="image-container">
-     <img src="assets/Profile.jpg" alt="Image with cut-out effect" class="cut-out-image"> 
+     <img src="assets/Profile.jpg" alt="Image with cut-out effect" class="cut-out-image">
     </div> -->
-  
-    <h1 id="name">Bakiyalakshmi Palani</h1>
-    <h2  id="whoami">Full Stack Developer [AWS Developer Associate]</h2>
-    <p class="howCanIHelpYou">
+
+    <h1 id="name" class="text-4xl lg:text-5xl font-bold tracking-tight text-slate-200" style="text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);">Bakiyalakshmi Palani</h1>
+    <h2 id="whoami" class="mt-3 text-lg lg:text-xl font-medium tracking-tight text-slate-200">Full Stack Developer [AWS Developer Associate]</h2>
+    <p class="howCanIHelpYou mt-4 text-slate-400 italic">
       Building cool stuff, <br>
-       <span class="step-1"> crafting slick designs </span><br>
-        <span class="step-2">and tackling challenges with flair!</span>
-    </p>    
+       <span class="step-1 inline-block ml-6"> crafting slick designs </span><br> <!-- Adjusted indentation with ml-6 -->
+        <span class="step-2 inline-block ml-10">and tackling challenges with flair!</span> <!-- Adjusted indentation with ml-10 -->
+    </p>
   </header>
 
   <div>
@@ -24,13 +24,15 @@
       </ul>
     </div>
   </div>
-  <footer>
-    <div class="footer-icons">
-      <a href="https://www.linkedin.com/in/bakiyalakshmi97atinfinity/" target="_blank">
-        <i class="fab fa-linkedin"></i>
+  <footer class="mt-16"> <!-- Added margin-top -->
+    <div class="footer-icons flex justify-start gap-5"> <!-- Replaced justify-center with justify-start, adjusted gap -->
+      <a href="https://www.linkedin.com/in/bakiyalakshmi97atinfinity/" target="_blank" class="block text-slate-400 hover:text-slate-200"> <!-- Added block, colors -->
+        <span class="sr-only">LinkedIn</span> <!-- Added for accessibility -->
+        <i class="fab fa-linkedin text-2xl"></i> <!-- Adjusted icon size -->
       </a>
-      <a href="https://github.com/bakiyaa" target="_blank">
-        <i class="fab fa-github"></i>
+      <a href="https://github.com/bakiyaa" target="_blank" class="block text-slate-400 hover:text-slate-200"> <!-- Added block, colors -->
+        <span class="sr-only">GitHub</span> <!-- Added for accessibility -->
+        <i class="fab fa-github text-2xl"></i> <!-- Adjusted icon size -->
       </a>
     </div>
   </footer>

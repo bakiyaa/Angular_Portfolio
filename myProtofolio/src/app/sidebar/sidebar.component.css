@@ -1,49 +1,16 @@
-#name{
-  font-size: var(--font-size-xlarge); /* Equivalent to text-4xl */
-  font-weight: bolder; /* Equivalent to font-bold */
-  letter-spacing: -0.08em; /* Equivalent to tracking-tight */
-  color: #e2e8f0; /* Equivalent to text-slate-200 */
-  border-width: 2rem;
-  border: 0 solid #e5e7eb;
-  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-}
+/* Styles for #name, #whoami, .howCanIHelpYou are now handled by Tailwind utilities in sidebar.component.html */
+/* Responsive styles for #name and #whoami are also handled by Tailwind */
 
-@media (max-width: 768px) {
-  #name{
-    font-size: 2rem; /* Equivalent to text-4xl */
-  }
-  #whoami {
-    font-weight: 0.4rem;
-    font-weight: bold; 
-    font-size: 0.5rem;
-  }
-}
-
-
-#whoami {
-  font-weight: var(--font-size-large); /* Slightly bolder for emphasis */ /* Space between role and description */
-  letter-spacing: 0.015em; /* Slightly wider for readability */
-  font-size: 1.25rem;
-  font-weight: bolder; 
-  color: var(--primary-color);/* Increased font size */
-}
-
-/* How Can I Help Section */
-.howCanIHelpYou {
-  word-wrap: break-word;
-  font-size: var(--font-size-medium);
-  font-style: italic;
-  line-height: 1.6;
-  font-weight: 400;
-  margin-bottom: 50px;
-}
-
-.howCanIHelpYou .step-1 {
-  margin-left: 1.5rem; /* Indentation for the second line */
-}
-.howCanIHelpYou .step-2 {
-  margin-left: 2.5rem; /* Indentation for the second line */
-}
+/* @media (max-width: 768px) { */
+  /* #name{ */
+    /* font-size: 2rem; /* Equivalent to text-4xl */
+  /* } */
+  /* #whoami { */
+    /* font-weight: 0.4rem; */
+    /* font-weight: bold;  */
+    /* font-size: 0.5rem; */
+  /* } */
+/* } */
 
 .custom-link:hover,
 .custom-link:focus-visible {
@@ -109,30 +76,31 @@
   padding-left: 70px; /* Move text further to match the line's elongation */
 }
 
-.footer-icons {
-  display: flex;
-  justify-content: center; /* Center the icons and links */
-  gap: 20px; /* Space between the links */
-}
+/* Footer styles are now handled by Tailwind utilities in sidebar.component.html */
+/* .footer-icons { */
+  /* display: flex; */
+  /* justify-content: center; /* Center the icons and links */
+  /* gap: 20px; /* Space between the links */
+/* } */
 
-.footer-icons a {
-  text-decoration: none; /* Remove underline from links */
-  font-size: 1rem; /* Default font size for link text */
-  color: #f0f4f8; /* Off-white color for text and icons */
-  display: flex; /* Use flexbox for stacking icon and text */
-  flex-direction: column; /* Stack icon above the text */
-  align-items: center; /* Center-align icon and text */
-  transition: color 0.3s ease; /* Smooth color transition on hover */
-}
+/* .footer-icons a { */
+  /* text-decoration: none; /* Remove underline from links */
+  /* font-size: 1rem; /* Default font size for link text */
+  /* color: #f0f4f8; /* Off-white color for text and icons */
+  /* display: flex; /* Use flexbox for stacking icon and text */
+  /* flex-direction: column; /* Stack icon above the text */
+  /* align-items: center; /* Center-align icon and text */
+  /* transition: color 0.3s ease; /* Smooth color transition on hover */
+/* } */
 
-.footer-icons a:hover {
-  color: #d1dbe5; /* Slightly brighter color on hover */
-}
+/* .footer-icons a:hover { */
+  /* color: #d1dbe5; /* Slightly brighter color on hover */
+/* } */
 
-.footer-icons i {
-  margin-top: 10px; /* Add spacing above the icon */
-  font-size: 2rem; /* Size of the icon */
-  line-height: 1; /* Ensure consistent alignment */
-  position: relative; /* Enable fine adjustments */
-  top: 0; /* Reset top position for consistency */
-}
+/* .footer-icons i { */
+  /* margin-top: 10px; /* Add spacing above the icon */
+  /* font-size: 2rem; /* Size of the icon */
+  /* line-height: 1; /* Ensure consistent alignment */
+  /* position: relative; /* Enable fine adjustments */
+  /* top: 0; /* Reset top position for consistency */
+/* } */

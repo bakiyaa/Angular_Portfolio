@@ -1,13 +1,8 @@
 
 
 .container {
-  display: grid; /* Create grid layout */
-  grid-template-columns: 45% 1fr; /* Sidebar takes 1 part, content takes 3 parts */
-  grid-template-rows: 1fr auto; /* Auto for main content and footer */
+  /* Tailwind handles grid layout: lg:grid lg:grid-cols-[45%_1fr] gap-6 max-w-screen-xl mx-auto */
   min-height: 100vh; /* Full height of the viewport */
-  margin: 0 auto;
-  max-width: 1280px;
-  gap: 1.5rem; 
   position: relative;/* Space between sidebar and main content */
 }
 
@@ -24,8 +19,8 @@
   scroll-behavior: smooth;
 }
 
-/* Main Content */
-.main-content .main-content-xsl {
+/* Main Content - visible on large screens (hidden lg:block in HTML) */
+.main-content {
   display: flex; /* Flexbox inside main content */
   flex-direction: column; /* Stack the content vertically */
   padding-top: 3.5rem;
@@ -33,56 +28,43 @@
   scroll-behavior: smooth;
 }
 
-/* Footer inside main content */
-.main-content .main-content-xsl> app-footer {
-  margin-top: 4rem; /* Push footer to the bottom */
-}
-
-/* Scrollbar Customization */
-.main-content .main-content-xsl::-webkit-scrollbar {
+/* Scrollbar Customization for main content */
+.main-content::-webkit-scrollbar {
   width: 8px;
 }
-
-.main-content .main-content-xsl::-webkit-scrollbar-thumb {
+.main-content::-webkit-scrollbar-thumb {
   background-color: #64ffda;
   border-radius: 10px;
+}
+
+/* Main Content XSL - visible on small screens (lg:hidden in HTML) */
+.main-content-xsl {
+  display: flex; /* Flexbox inside main content */
+  flex-direction: column; /* Stack the content vertically */
+  padding-top: 3.5rem;
+  /* overflow-y: auto; /* No longer needed as main content scrolls */
+  /* scroll-behavior: smooth; */
+}
+
+
+/* Footer inside main content */
+.main-content > app-footer,
+.main-content-xsl > app-footer {
+  margin-top: 4rem; /* Push footer to the bottom */
 }
 
 app-footer{
   padding: 3rem;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
- 
-  .container {
-    display : grid; /* Create grid layout */
-    grid-template-columns: 1fr; /* Stack the sidebar and content vertically */
-  }
 
-  .app-sidebar {
-    position: relative; /* Remove sticky position on small screens */
-    width: 100%; /* Full width */
-    padding: 2rem;
-    order: -1; /* Move sidebar to the top on smaller screens */
-  }
-  .main-content {
-     display: none;
-  }
-  
-  .p-4 {
-    display: none; /* Hide the side links */
-  }
-  .custom-list {
-    display: none;
-  }
-  .app-sidebar{
-    height: auto;
-  }
-}
+/* Responsive Design - Handled by Tailwind classes in app.component.html */
+/* Media queries below are removed as Tailwind handles responsiveness */
 
-@media (min-width: 768px) { 
-  .main-content-xsl{
-    display: none;
-  }
-}
+/* @media (max-width: 768px) { */
+  /* ... rules removed ... */
+/* } */
+
+/* @media (min-width: 768px) {  */
+  /* ... rules removed ... */
+/* } */
