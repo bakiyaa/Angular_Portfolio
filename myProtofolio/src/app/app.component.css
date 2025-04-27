@@ -1,5 +1,4 @@
-
-
+/* Main Layout Container */
 .container {
   display: grid; /* Create grid layout */
   grid-template-columns: 45% 1fr; /* Sidebar takes 1 part, content takes 3 parts */
@@ -11,6 +10,7 @@
   position: relative;/* Space between sidebar and main content */
 }
 
+/* Sidebar Styling */
 .app-sidebar {
   display: flex; /* Arrange items vertically inside the sidebar */
   flex-direction: column;
@@ -24,8 +24,8 @@
   scroll-behavior: smooth;
 }
 
-/* Main Content */
-.main-content .main-content-xsl {
+/* Main Content Area */
+.main-content .main-content-xsl { /* Assuming main-content-xsl is the primary content wrapper */
   display: flex; /* Flexbox inside main content */
   flex-direction: column; /* Stack the content vertically */
   padding-top: 3.5rem;
@@ -33,8 +33,8 @@
   scroll-behavior: smooth;
 }
 
-/* Footer inside main content */
-.main-content .main-content-xsl> app-footer {
+/* Footer within Main Content */
+.main-content .main-content-xsl > app-footer {
   margin-top: 4rem; /* Push footer to the bottom */
 }
 
@@ -48,40 +48,45 @@
   border-radius: 10px;
 }
 
-app-footer{
+/* Global Footer Padding - Review: Consider moving to footer.component.css if this padding is universally needed for the footer element. Keeping it here as it might be specific to the app component's layout context. */
+app-footer {
   padding: 3rem;
 }
 
-/* Responsive Design */
+/* Responsive Design Adjustments */
 @media (max-width: 768px) {
  
+  /* Responsive Layout Container */
   .container {
     display : grid; /* Create grid layout */
     grid-template-columns: 1fr; /* Stack the sidebar and content vertically */
   }
 
+  /* Responsive Sidebar */
   .app-sidebar {
     position: relative; /* Remove sticky position on small screens */
     width: 100%; /* Full width */
     padding: 2rem;
     order: -1; /* Move sidebar to the top on smaller screens */
+    height: auto; /* Adjust height for stacked layout */
   }
+
+  /* Hide Main Content on Small Screens (Potentially specific behavior) */
   .main-content {
      display: none;
   }
   
+  /* Hide Specific Elements on Small Screens */
   .p-4 {
     display: none; /* Hide the side links */
   }
   .custom-list {
     display: none;
   }
-  .app-sidebar{
-    height: auto;
-  }
 }
 
 @media (min-width: 768px) { 
+  /* Hide alternate main content on larger screens */
   .main-content-xsl{
     display: none;
   }
