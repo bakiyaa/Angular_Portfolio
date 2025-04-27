@@ -10,12 +10,12 @@
 
 @media (max-width: 768px) {
   #name{
-    font-size: 2rem; /* Equivalent to text-4xl */
+    font-size: 3rem; /* Equivalent to text-4xl */
   }
   #whoami {
     font-weight: 0.4rem;
     font-weight: bold; 
-    font-size: 0.5rem;
+    font-size: 2.5rem;
   }
 }
 

@@ -1,10 +1,10 @@
 import {
   BrowserModule,
   DomRendererFactory2
-} from "./chunk-34UBDUVI.js";
+} from "./chunk-5A2VFRRO.js";
 import {
   DOCUMENT
-} from "./chunk-4IOCDZ3Z.js";
+} from "./chunk-C6ZCWS4E.js";
 import {
   ANIMATION_MODULE_TYPE,
   Inject,
@@ -13,21 +13,19 @@ import {
   NgZone,
   RendererFactory2,
   RuntimeError,
-  ViewEncapsulation,
-  inject,
   performanceMarkFeature,
   setClassMetadata,
   ɵɵdefineInjectable,
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-VFBMMIM3.js";
+} from "./chunk-WVMZWLDY.js";
 import {
   __objRest,
   __spreadValues
-} from "./chunk-5TID76VL.js";
+} from "./chunk-S35MAB2V.js";
 
-// node_modules/@angular/animations/fesm2022/animations.mjs
+// node_modules/@angular/animations/fesm2022/private_export-CacKMzxJ.mjs
 var AnimationMetadataType;
 (function(AnimationMetadataType2) {
   AnimationMetadataType2[AnimationMetadataType2["State"] = 0] = "State";
@@ -58,169 +56,6 @@ function style(tokens) {
     styles: tokens,
     offset: null
   };
-}
-var AnimationBuilder = class _AnimationBuilder {
-  static ɵfac = function AnimationBuilder_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _AnimationBuilder)();
-  };
-  static ɵprov = ɵɵdefineInjectable({
-    token: _AnimationBuilder,
-    factory: () => (() => inject(BrowserAnimationBuilder))(),
-    providedIn: "root"
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(AnimationBuilder, [{
-    type: Injectable,
-    args: [{
-      providedIn: "root",
-      useFactory: () => inject(BrowserAnimationBuilder)
-    }]
-  }], null, null);
-})();
-var AnimationFactory = class {
-};
-var BrowserAnimationBuilder = class _BrowserAnimationBuilder extends AnimationBuilder {
-  animationModuleType = inject(ANIMATION_MODULE_TYPE, {
-    optional: true
-  });
-  _nextAnimationId = 0;
-  _renderer;
-  constructor(rootRenderer, doc) {
-    super();
-    const typeData = {
-      id: "0",
-      encapsulation: ViewEncapsulation.None,
-      styles: [],
-      data: {
-        animation: []
-      }
-    };
-    this._renderer = rootRenderer.createRenderer(doc.body, typeData);
-    if (this.animationModuleType === null && !isAnimationRenderer(this._renderer)) {
-      throw new RuntimeError(3600, (typeof ngDevMode === "undefined" || ngDevMode) && "Angular detected that the `AnimationBuilder` was injected, but animation support was not enabled. Please make sure that you enable animations in your application by calling `provideAnimations()` or `provideAnimationsAsync()` function.");
-    }
-  }
-  build(animation) {
-    const id = this._nextAnimationId;
-    this._nextAnimationId++;
-    const entry = Array.isArray(animation) ? sequence(animation) : animation;
-    issueAnimationCommand(this._renderer, null, id, "register", [entry]);
-    return new BrowserAnimationFactory(id, this._renderer);
-  }
-  static ɵfac = function BrowserAnimationBuilder_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _BrowserAnimationBuilder)(ɵɵinject(RendererFactory2), ɵɵinject(DOCUMENT));
-  };
-  static ɵprov = ɵɵdefineInjectable({
-    token: _BrowserAnimationBuilder,
-    factory: _BrowserAnimationBuilder.ɵfac,
-    providedIn: "root"
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(BrowserAnimationBuilder, [{
-    type: Injectable,
-    args: [{
-      providedIn: "root"
-    }]
-  }], () => [{
-    type: RendererFactory2
-  }, {
-    type: Document,
-    decorators: [{
-      type: Inject,
-      args: [DOCUMENT]
-    }]
-  }], null);
-})();
-var BrowserAnimationFactory = class extends AnimationFactory {
-  _id;
-  _renderer;
-  constructor(_id, _renderer) {
-    super();
-    this._id = _id;
-    this._renderer = _renderer;
-  }
-  create(element, options) {
-    return new RendererAnimationPlayer(this._id, element, options || {}, this._renderer);
-  }
-};
-var RendererAnimationPlayer = class {
-  id;
-  element;
-  _renderer;
-  parentPlayer = null;
-  _started = false;
-  constructor(id, element, options, _renderer) {
-    this.id = id;
-    this.element = element;
-    this._renderer = _renderer;
-    this._command("create", options);
-  }
-  _listen(eventName, callback) {
-    return this._renderer.listen(this.element, `@@${this.id}:${eventName}`, callback);
-  }
-  _command(command, ...args) {
-    issueAnimationCommand(this._renderer, this.element, this.id, command, args);
-  }
-  onDone(fn) {
-    this._listen("done", fn);
-  }
-  onStart(fn) {
-    this._listen("start", fn);
-  }
-  onDestroy(fn) {
-    this._listen("destroy", fn);
-  }
-  init() {
-    this._command("init");
-  }
-  hasStarted() {
-    return this._started;
-  }
-  play() {
-    this._command("play");
-    this._started = true;
-  }
-  pause() {
-    this._command("pause");
-  }
-  restart() {
-    this._command("restart");
-  }
-  finish() {
-    this._command("finish");
-  }
-  destroy() {
-    this._command("destroy");
-  }
-  reset() {
-    this._command("reset");
-    this._started = false;
-  }
-  setPosition(p) {
-    this._command("setPosition", p);
-  }
-  getPosition() {
-    return unwrapAnimationRenderer(this._renderer)?.engine?.players[this.id]?.getPosition() ?? 0;
-  }
-  totalTime = 0;
-};
-function issueAnimationCommand(renderer, element, id, command, args) {
-  renderer.setProperty(element, `@@${id}:${command}`, args);
-}
-function unwrapAnimationRenderer(renderer) {
-  const type = renderer.ɵtype;
-  if (type === 0) {
-    return renderer;
-  } else if (type === 1) {
-    return renderer.animationRenderer;
-  }
-  return null;
-}
-function isAnimationRenderer(renderer) {
-  const type = renderer.ɵtype;
-  return type === 0 || type === 1;
 }
 var NoopAnimationPlayer = class {
   _onDoneFns = [];
@@ -445,7 +280,7 @@ var AnimationGroupPlayer = class {
 };
 var ɵPRE_STYLE = "!";
 
-// node_modules/@angular/animations/fesm2022/browser.mjs
+// node_modules/@angular/animations/fesm2022/util-DN3Vao_r.mjs
 var LINE_START = "\n - ";
 function invalidTimingValue(exp) {
   return new RuntimeError(3e3, ngDevMode && `The provided timing value "${exp}" is invalid.`);
@@ -696,66 +531,6 @@ function invokeQuery(element, selector, multi) {
   const elem = element.querySelector(selector);
   return elem ? [elem] : [];
 }
-var NoopAnimationDriver = class _NoopAnimationDriver {
-  /**
-   * @returns Whether `prop` is a valid CSS property
-   */
-  validateStyleProperty(prop) {
-    return validateStyleProperty(prop);
-  }
-  /**
-   *
-   * @returns Whether elm1 contains elm2.
-   */
-  containsElement(elm1, elm2) {
-    return containsElement(elm1, elm2);
-  }
-  /**
-   * @returns Rhe parent of the given element or `null` if the element is the `document`
-   */
-  getParentElement(element) {
-    return getParentElement(element);
-  }
-  /**
-   * @returns The result of the query selector on the element. The array will contain up to 1 item
-   *     if `multi` is  `false`.
-   */
-  query(element, selector, multi) {
-    return invokeQuery(element, selector, multi);
-  }
-  /**
-   * @returns The `defaultValue` or empty string
-   */
-  computeStyle(element, prop, defaultValue) {
-    return defaultValue || "";
-  }
-  /**
-   * @returns An `NoopAnimationPlayer`
-   */
-  animate(element, keyframes, duration, delay, easing, previousPlayers = [], scrubberAccessRequested) {
-    return new NoopAnimationPlayer(duration, delay);
-  }
-  static ɵfac = function NoopAnimationDriver_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _NoopAnimationDriver)();
-  };
-  static ɵprov = ɵɵdefineInjectable({
-    token: _NoopAnimationDriver,
-    factory: _NoopAnimationDriver.ɵfac
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NoopAnimationDriver, [{
-    type: Injectable
-  }], null, null);
-})();
-var AnimationDriver = class {
-  /**
-   * @deprecated Use the NoopAnimationDriver class.
-   */
-  static NOOP = new NoopAnimationDriver();
-};
-var AnimationStyleNormalizer = class {
-};
 var ONE_SECOND = 1e3;
 var SUBSTITUTION_EXPR_START = "{{";
 var SUBSTITUTION_EXPR_END = "}}";
@@ -960,6 +735,68 @@ function visitDslNode(visitor, node, context) {
 function computeStyle(element, prop) {
   return window.getComputedStyle(element)[prop];
 }
+
+// node_modules/@angular/animations/fesm2022/browser.mjs
+var NoopAnimationDriver = class _NoopAnimationDriver {
+  /**
+   * @returns Whether `prop` is a valid CSS property
+   */
+  validateStyleProperty(prop) {
+    return validateStyleProperty(prop);
+  }
+  /**
+   *
+   * @returns Whether elm1 contains elm2.
+   */
+  containsElement(elm1, elm2) {
+    return containsElement(elm1, elm2);
+  }
+  /**
+   * @returns Rhe parent of the given element or `null` if the element is the `document`
+   */
+  getParentElement(element) {
+    return getParentElement(element);
+  }
+  /**
+   * @returns The result of the query selector on the element. The array will contain up to 1 item
+   *     if `multi` is  `false`.
+   */
+  query(element, selector, multi) {
+    return invokeQuery(element, selector, multi);
+  }
+  /**
+   * @returns The `defaultValue` or empty string
+   */
+  computeStyle(element, prop, defaultValue) {
+    return defaultValue || "";
+  }
+  /**
+   * @returns An `NoopAnimationPlayer`
+   */
+  animate(element, keyframes, duration, delay, easing, previousPlayers = [], scrubberAccessRequested) {
+    return new NoopAnimationPlayer(duration, delay);
+  }
+  static ɵfac = function NoopAnimationDriver_Factory(__ngFactoryType__) {
+    return new (__ngFactoryType__ || _NoopAnimationDriver)();
+  };
+  static ɵprov = ɵɵdefineInjectable({
+    token: _NoopAnimationDriver,
+    factory: _NoopAnimationDriver.ɵfac
+  });
+};
+(() => {
+  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NoopAnimationDriver, [{
+    type: Injectable
+  }], null, null);
+})();
+var AnimationDriver = class {
+  /**
+   * @deprecated Use the NoopAnimationDriver class.
+   */
+  static NOOP = new NoopAnimationDriver();
+};
+var AnimationStyleNormalizer = class {
+};
 var DIMENSIONAL_PROP_SET = /* @__PURE__ */ new Set(["width", "height", "minWidth", "minHeight", "maxWidth", "maxHeight", "left", "top", "bottom", "right", "fontSize", "outlineWidth", "outlineOffset", "paddingTop", "paddingLeft", "paddingBottom", "paddingRight", "marginTop", "marginLeft", "marginBottom", "marginRight", "borderRadius", "borderWidth", "borderTopWidth", "borderLeftWidth", "borderRightWidth", "borderBottomWidth", "textIndent", "perspective"]);
 var WebAnimationsStyleNormalizer = class extends AnimationStyleNormalizer {
   normalizePropertyName(propertyName, errors) {
@@ -986,10 +823,10 @@ function createListOfWarnings(warnings) {
   return `${LINE_START2}${warnings.filter(Boolean).map((warning) => warning).join(LINE_START2)}`;
 }
 function warnTriggerBuild(name, warnings) {
-  (typeof ngDevMode === "undefined" || ngDevMode) && console.warn(`The animation trigger "${name}" has built with the following warnings:${createListOfWarnings(warnings)}`);
+  console.warn(`The animation trigger "${name}" has built with the following warnings:${createListOfWarnings(warnings)}`);
 }
 function warnRegister(warnings) {
-  (typeof ngDevMode === "undefined" || ngDevMode) && console.warn(`Animation built with the following warnings:${createListOfWarnings(warnings)}`);
+  console.warn(`Animation built with the following warnings:${createListOfWarnings(warnings)}`);
 }
 function pushUnrecognizedPropertiesWarning(warnings, props) {
   if (props.length) {
@@ -2355,7 +2192,7 @@ var AnimationTrigger = class {
     ast.transitions.forEach((ast2) => {
       this.transitionFactories.push(new AnimationTransitionFactory(name, ast2, this.states));
     });
-    this.fallbackTransition = createFallbackTransition(name, this.states, this._normalizer);
+    this.fallbackTransition = createFallbackTransition(name, this.states);
   }
   get containsQueries() {
     return this.ast.queryCount > 0;
@@ -2414,8 +2251,10 @@ var TimelineAnimationEngine = class {
     if (errors.length) {
       throw registerFailed(errors);
     } else {
-      if (warnings.length) {
-        warnRegister(warnings);
+      if (typeof ngDevMode === "undefined" || ngDevMode) {
+        if (warnings.length) {
+          warnRegister(warnings);
+        }
       }
       this._animations.set(id, ast);
     }
@@ -3840,8 +3679,10 @@ var AnimationEngine = class {
       if (errors.length) {
         throw triggerBuildFailed(name, errors);
       }
-      if (warnings.length) {
-        warnTriggerBuild(name, warnings);
+      if (typeof ngDevMode === "undefined" || ngDevMode) {
+        if (warnings.length) {
+          warnTriggerBuild(name, warnings);
+        }
       }
       trigger = buildTrigger(name, ast, this._normalizer);
       this._triggerCache[cacheKey] = trigger;
@@ -4283,8 +4124,8 @@ var BaseAnimationRenderer = class {
   setValue(node, value) {
     this.delegate.setValue(node, value);
   }
-  listen(target, eventName, callback) {
-    return this.delegate.listen(target, eventName, callback);
+  listen(target, eventName, callback, options) {
+    return this.delegate.listen(target, eventName, callback, options);
   }
   disableAnimations(element, value) {
     this.engine.disableAnimations(element, value);
@@ -4309,7 +4150,7 @@ var AnimationRenderer = class extends BaseAnimationRenderer {
       this.delegate.setProperty(el, name, value);
     }
   }
-  listen(target, eventName, callback) {
+  listen(target, eventName, callback, options) {
     if (eventName.charAt(0) == ANIMATION_PREFIX) {
       const element = resolveElementFromTarget(target);
       let name = eventName.slice(1);
@@ -4322,7 +4163,7 @@ var AnimationRenderer = class extends BaseAnimationRenderer {
         this.factory.scheduleListenerCallback(countId, callback, event);
       });
     }
-    return this.delegate.listen(target, eventName, callback);
+    return this.delegate.listen(target, eventName, callback, options);
   }
 };
 function resolveElementFromTarget(target) {
@@ -4434,6 +4275,14 @@ var AnimationRendererFactory = class {
   whenRenderingDone() {
     return this.engine.whenRenderingDone();
   }
+  /**
+   * Used during HMR to clear any cached data about a component.
+   * @param componentId ID of the component that is being replaced.
+   */
+  componentReplaced(componentId) {
+    this.engine.flush();
+    this.delegate.componentReplaced?.(componentId);
+  }
 };
 
 // node_modules/@angular/platform-browser/fesm2022/animations.mjs
@@ -4487,13 +4336,6 @@ var SHARED_ANIMATION_PROVIDERS = [{
   useFactory: instantiateRendererFactory,
   deps: [DomRendererFactory2, AnimationEngine, NgZone]
 }];
-var BROWSER_ANIMATIONS_PROVIDERS = [{
-  provide: AnimationDriver,
-  useFactory: () => new WebAnimationsDriver()
-}, {
-  provide: ANIMATION_MODULE_TYPE,
-  useValue: "BrowserAnimations"
-}, ...SHARED_ANIMATION_PROVIDERS];
 var BROWSER_NOOP_ANIMATIONS_PROVIDERS = [{
   provide: AnimationDriver,
   useClass: NoopAnimationDriver
@@ -4501,6 +4343,18 @@ var BROWSER_NOOP_ANIMATIONS_PROVIDERS = [{
   provide: ANIMATION_MODULE_TYPE,
   useValue: "NoopAnimations"
 }, ...SHARED_ANIMATION_PROVIDERS];
+var BROWSER_ANIMATIONS_PROVIDERS = [
+  // Note: the `ngServerMode` happen inside factories to give the variable time to initialize.
+  {
+    provide: AnimationDriver,
+    useFactory: () => false ? new NoopAnimationDriver() : new WebAnimationsDriver()
+  },
+  {
+    provide: ANIMATION_MODULE_TYPE,
+    useFactory: () => false ? "NoopAnimations" : "BrowserAnimations"
+  },
+  ...SHARED_ANIMATION_PROVIDERS
+];
 var BrowserAnimationsModule = class _BrowserAnimationsModule {
   /**
    * Configures the module based on the specified object.
@@ -4511,7 +4365,7 @@ var BrowserAnimationsModule = class _BrowserAnimationsModule {
    * @usageNotes
    * When registering the `BrowserAnimationsModule`, you can use the `withConfig`
    * function as follows:
-   * ```
+   * ```ts
    * @NgModule({
    *   imports: [BrowserAnimationsModule.withConfig(config)]
    * })
@@ -4584,24 +4438,31 @@ export {
 };
 /*! Bundled license information:
 
-@angular/animations/fesm2022/animations.mjs:
+@angular/animations/fesm2022/private_export-CacKMzxJ.mjs:
   (**
-   * @license Angular v19.0.4
-   * (c) 2010-2024 Google LLC. https://angular.io/
+   * @license Angular v19.2.8
+   * (c) 2010-2025 Google LLC. https://angular.io/
+   * License: MIT
+   *)
+
+@angular/animations/fesm2022/util-DN3Vao_r.mjs:
+  (**
+   * @license Angular v19.2.8
+   * (c) 2010-2025 Google LLC. https://angular.io/
    * License: MIT
    *)
 
 @angular/animations/fesm2022/browser.mjs:
   (**
-   * @license Angular v19.0.4
-   * (c) 2010-2024 Google LLC. https://angular.io/
+   * @license Angular v19.2.8
+   * (c) 2010-2025 Google LLC. https://angular.io/
    * License: MIT
    *)
 
 @angular/platform-browser/fesm2022/animations.mjs:
   (**
-   * @license Angular v19.0.4
-   * (c) 2010-2024 Google LLC. https://angular.io/
+   * @license Angular v19.2.8
+   * (c) 2010-2025 Google LLC. https://angular.io/
    * License: MIT
    *)
 */

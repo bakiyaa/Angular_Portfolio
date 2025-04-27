@@ -16,12 +16,13 @@ import { CommonModule } from '@angular/common';
 import { AboutComponent } from "./about/about.component";
 import { ExperienceComponent } from "./experience/experience.component";
 import { ProjectsComponent } from "./projects/projects.component";
+import { BackgroundAnimationComponent } from "./background-animation/background-animation.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [SidebarComponent, FooterComponent, RouterOutlet, LoadingComponent, CommonModule, AboutComponent, ExperienceComponent, ProjectsComponent], // Fixed typo
+  imports: [SidebarComponent, FooterComponent, RouterOutlet, LoadingComponent, CommonModule, AboutComponent, ExperienceComponent, ProjectsComponent, BackgroundAnimationComponent], // Fixed typo
 })
 export class AppComponent implements OnInit {
 

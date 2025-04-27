@@ -5,6 +5,7 @@
     <app-sidebar></app-sidebar>
   </div>
   <div class="main-content" (scroll)="onScroll($event)">
+    <app-background-animation></app-background-animation>
       <app-loading *ngIf="isLoading"></app-loading>
       <router-outlet></router-outlet>
       <app-footer></app-footer>
