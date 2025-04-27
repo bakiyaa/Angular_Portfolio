@@ -10,8 +10,6 @@ export class BackgroundAnimationComponent implements AfterViewInit {
     this.createConstellation();
   }
 
-
-
   createConstellation() {
     const canvas = document.getElementById('constellation-canvas') as HTMLCanvasElement;
     const ctx = canvas.getContext('2d')!;
@@ -20,24 +18,30 @@ export class BackgroundAnimationComponent implements AfterViewInit {
     canvas.width = width;
     canvas.height = height;
 
-    const stars: { x: number, y: number, radius: number }[] = [];
-    //const starCount = 60;
-    const starCount = Math.floor((window.innerWidth * window.innerHeight) / 15000);
-    const connectionDistance = 150;
+    const stars: { x: number, y: number, radius: number, dx: number, dy: number }[] = [];
+    const starCount = 150; // Adjust the number of stars as needed
+    const connectionDistance = 89;
 
-    // Create random stars
+    // Create random stars with random velocities
     for (let i = 0; i < starCount; i++) {
       stars.push({
         x: Math.random() * width,
         y: Math.random() * height,
-       // radius: Math.random() * 1.5 + 0.5
-      // radius: Math.random() * 1.0 + 0.3
-      radius: Math.random() * 0.8 + 0.2
+        radius: Math.random() * 0.8 + 0.2,
+        dx: Math.random() * 2.0 - 1.0,  // Moderate velocity for x direction
+        dy: Math.random() * 2.0 - 1.0   // Moderate velocity for y direction            
       });
     }
 
-    // Add mouse/touch star
-    const mouse = { x: width / 2, y: height / 2, radius: 2 };
+    // Add the mouse star with a consistent movement
+    const mouse = { 
+      x: width / 2, 
+      y: height / 2, 
+      radius: 2, 
+      dx: Math.random() * 1.0 - 0.5, 
+      dy: Math.random() * 1.0 - 0.5 
+    };
+
     stars.push(mouse);
 
     // Mouse move event
@@ -62,22 +66,17 @@ export class BackgroundAnimationComponent implements AfterViewInit {
 
     function drawGalaxy() {
       const gradient = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, Math.max(width, height));
-    //  gradient.addColorStop(0, 'rgba(255, 255, 255, 0.4)');  // Light center glow
       gradient.addColorStop(1, 'rgba(0, 0, 0, 0.9)');  // Dark outer edge
-      
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
     }
-    
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
-        // Draw galaxy effect first
+      // Draw galaxy effect first
       drawGalaxy();
 
-
       // Draw stars
-      //ctx.fillStyle = 'rgba(255, 255, 255, 0.8)'; // ✨ slightly transparent stars
       ctx.fillStyle = 'rgba(255, 255, 255, 1)';
       for (let star of stars) {
         ctx.beginPath();
@@ -94,7 +93,7 @@ export class BackgroundAnimationComponent implements AfterViewInit {
 
           if (dist < connectionDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - dist / connectionDistance) * 0.6})`; // ✨ smooth line transparency
+            ctx.strokeStyle = `rgba(255, 255, 255, ${(1 - dist / connectionDistance) * 0.6})`;
             ctx.moveTo(stars[i].x, stars[i].y);
             ctx.lineTo(stars[j].x, stars[j].y);
             ctx.stroke();
@@ -102,14 +101,13 @@ export class BackgroundAnimationComponent implements AfterViewInit {
         }
       }
 
-      // Slight random movement
+      // Move stars with their velocities
       for (let star of stars) {
-        if (star !== mouse) { // Do not move the mouse/touch star
-        //  star.x += Math.random() * 0.5 - 0.25;
-        //  star.y += Math.random() * 0.5 - 0.25;
-        star.x += Math.random() * 0.25 - 0.125; // Reduced movement to keep them in place
-        star.y += Math.random() * 0.25 - 0.125;
+        if (star !== mouse) { // Don't move the mouse star here
+          star.x += star.dx;
+          star.y += star.dy;
 
+          // Ensure stars wrap around the canvas edges
           if (star.x < 0) star.x = width;
           if (star.x > width) star.x = 0;
           if (star.y < 0) star.y = height;
@@ -117,6 +115,7 @@ export class BackgroundAnimationComponent implements AfterViewInit {
         }
       }
 
+      // Draw again
       requestAnimationFrame(draw);
     }
 
@@ -129,5 +128,4 @@ export class BackgroundAnimationComponent implements AfterViewInit {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
-  
 }
