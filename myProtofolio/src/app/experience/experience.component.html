@@ -1,4 +1,4 @@
-<section id="exp">
+<!--<section id="exp">
   <div *ngFor="let job of experiences"  class="card">
     <p class="card-header"><span>{{ job.duration }}</span><span class="highlight">{{ job.role }} · {{ job.company }}</span></p>
     <p class="description">{{ job.description }}</p>
@@ -6,4 +6,37 @@
       <span *ngFor="let tech of job.techStack">{{ tech }}</span>
     </div>
   </div>
+</section>-->
+
+<section id="exp">
+  <div class="timeline">
+    <!-- Each Experience as a "Stop" on the Timeline -->
+    <div *ngFor="let job of experiences; let i = index" class="timeline-item">
+      <!-- Battery Indicator -->
+      <div class="battery-indicator">
+        <div class="battery">
+          <div class="battery-level" [style.width]="100 + '%'">
+            <span>{{ job.duration }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience Details -->
+      <div class="card">
+        <p class="card-header" >
+          <span class="highlight"  style="color: black;">{{ job.role }} - {{ job.company }}</span>
+        </p>
+        <p class="description" style="color: black;">{{ job.description }}</p>
+      <!-- <div class="tech-stack">
+          <span *ngFor="let tech of job.techStack">{{ tech }}</span>
+        </div>--> 
+      </div>
+        <!-- Tech Stack Icons Outside -->
+        <div class="tech-stack-planet">
+          <span *ngFor="let tech of job.techStack">{{ tech }}</span>
+        </div>
+    </div>
+  </div>
 </section>
+
+
