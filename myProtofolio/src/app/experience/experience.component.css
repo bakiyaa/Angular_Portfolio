@@ -1,9 +1,207 @@
+/* Timeline container */
+.timeline {
+  position: relative;
+  margin: 50px auto;
+  padding: 20px 0;
+  width: 90%;
+}
 
+/* Vertical line in center */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #e0e0e0;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
+}
 
+/* Each timeline item */
+.timeline-item {
+  padding: 20px 30px;
+  position: relative;
+  width: 50%;
+}
 
+/* Position left or right alternately */
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
 
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
 
+/* Card Styling */
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
+/* Connector dot */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  right: -9px;
+  background-color: #fff;
+  border: 4px solid #4CAF50; /* green color dot */
+  top: 20px;
+  border-radius: 50%;
+  z-index: 1;
+}
 
+/* Shift dot for even items */
+.timeline-item:nth-child(even)::before {
+  left: -9px;
+}
 
+/* Battery Indicator */
+.battery-indicator {
+  margin-bottom: 10px;
+}
 
+.battery {
+  background: #ccc;
+  width: 220px; /* increased width */
+  height: 30px;  /* increased height */
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  border: 2px solid #999;
+}
+
+.battery-level {
+  width: 100%; /* make battery full */
+  height: 100%;
+  background: #4CAF50;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  line-height: 30px; /* match height */
+  transition: width 0.5s ease;
+}
+
+/* Tech Stack */
+.tech-stack {
+  margin-top: 10px;
+}
+
+.tech-stack span {
+  background: #f0f0f0;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 3px;
+  display: inline-block;
+}
+
+/* Responsive: stack items vertically on small screens */
+@media screen and (max-width: 768px) {
+  .timeline::after {
+    left: 8px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 15px;
+    margin-bottom: 30px;
+  }
+
+  .timeline-item:nth-child(odd),
+  .timeline-item:nth-child(even) {
+    left: 0;
+  }
+
+  .timeline-item::before {
+    left: 0px;
+  }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.timeline-item:nth-child(odd) {
+  animation: slideLeft 0.8s ease forwards;
+}
+
+.timeline-item:nth-child(even) {
+  animation: slideRight 0.8s ease forwards;
+}
+
+/* Tech Icons outside */
+
+/* Tech Stack as Planets */
+.tech-stack-planet {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+}
+
+/* Planets width */
+.tech-stack-planet {
+  width: 25%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Each tech icon */
+.tech-stack-planet span {
+  background: radial-gradient(circle, #4CAF50 40%, #81C784 100%);
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 8px;
+  font-size: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect (optional) */
+.tech-stack-planet span:hover {
+  transform: scale(1.2);
+}
+
+.highlight {
+  display: inline-block;
+  font-weight: bold;
+  color: #2e7d32; /* rich forest green */
+  background: rgba(200, 230, 201, 0.3); /* light green mist */
+  border: 1px solid #81c784; /* soft green border */
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  /*font-family: 'Orbitron', sans-serif;*/
+ /* letter-spacing: 1px;
+  text-shadow: 0 0 3px #a5d6a7;*/
+ /* transition: background 0.3s, transform 0.3s;*/
+}
+
+.highlight:hover {
+  background: rgba(165, 214, 167, 0.5); /* deeper hover highlight */
+  transform: scale(1.03);
+}

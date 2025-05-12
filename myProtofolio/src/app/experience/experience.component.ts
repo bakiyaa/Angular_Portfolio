@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 export class ExperienceComponent {
   experiences = [
     {
-        role: "Software Engineer",
+        role: "Senoir Software Engineer",
         company: "Capgemini",
         duration: "August 2022 – Present",
         description: "Developed scalable microservices and APIs for Barclays' LoanIQ platform using Spring Boot, Kafka, and MongoDB, streamlining loan trading and processing workflows.",

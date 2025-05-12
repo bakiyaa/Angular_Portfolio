@@ -1,138 +1,133 @@
-#name{
-  font-size: var(--font-size-xlarge); /* Equivalent to text-4xl */
-  font-weight: bolder; /* Equivalent to font-bold */
-  letter-spacing: -0.08em; /* Equivalent to tracking-tight */
-  color: #e2e8f0; /* Equivalent to text-slate-200 */
-  border-width: 2rem;
-  border: 0 solid #e5e7eb;
-  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-bottom: 20px; /* Adds a bit of breathing room */
 }
 
+.cut-out-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Name Styling */
+#name {
+  display: flex;
+  justify-content: center;
+  font-size: 3rem; /* Equivalent to text-4xl */
+  font-weight: bold;
+  letter-spacing: -0.05em;
+  color: #e2e8f0;
+  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  margin-top: 10px;
+}
+
+/* Role Description Styling */
+#whoami {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  color: var(--primary-color);
+  margin-top: 10px;
+}
+
+/* Mobile Responsive Adjustments */
 @media (max-width: 768px) {
-  #name{
-    font-size: 3rem; /* Equivalent to text-4xl */
-  }
-  #whoami {
-    font-weight: 0.4rem;
-    font-weight: bold; 
+  #name {
     font-size: 2.5rem;
   }
+  #whoami {
+    font-size: 1.25rem;
+  }
 }
 
-
-#whoami {
-  font-weight: var(--font-size-large); /* Slightly bolder for emphasis */ /* Space between role and description */
-  letter-spacing: 0.015em; /* Slightly wider for readability */
-  font-size: 1.25rem;
-  font-weight: bolder; 
-  color: var(--primary-color);/* Increased font size */
-}
-
-/* How Can I Help Section */
-.howCanIHelpYou {
-  word-wrap: break-word;
-  font-size: var(--font-size-medium);
-  font-style: italic;
-  line-height: 1.6;
-  font-weight: 400;
-  margin-bottom: 50px;
-}
-
-.howCanIHelpYou .step-1 {
-  margin-left: 1.5rem; /* Indentation for the second line */
-}
-.howCanIHelpYou .step-2 {
-  margin-left: 2.5rem; /* Indentation for the second line */
-}
-
-.custom-link:hover,
-.custom-link:focus-visible {
-  color: #e2e8f0; /* group-hover:text-slate-200 and group-focus-visible:text-slate-200 */
-}
-
+/* Navigation List */
 .custom-list {
-  list-style-type: none; /* Removes the default bullet points */
+  list-style-type: none;
   padding: 0;
-  margin: 0;
-  margin-bottom: 50px;
+  margin: 20px 0;
 }
 
 .custom-list li {
-  margin-left: 0;
-  margin-bottom: 10px; /* Space between each link */
+  margin-bottom: 15px;
+  text-align: center;
 }
 
 .custom-link {
-  font-size: var(--font-size-small);
-  font-weight: bold; /* font-bold */
-  text-transform: uppercase; /* uppercase */
-  letter-spacing: 0.3em; /* tracking-widest */
-  color: #f0f4f8; /* Off-white but brighter */
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #f0f4f8;
   display: inline-block;
   position: relative;
-  padding-left: 50px;  /* Space between line and text */
-  transition: font-size 0.3s ease, padding-left 0.3s ease, color 0.3s ease; /* Smooth text and spacing transitions */
+  padding-left: 40px;
+  transition: all 0.3s ease;
 }
 
 .custom-link:before {
   content: '';
   position: absolute;
-  top: 50%; /* Center the line vertically */
+  top: 50%;
   left: 0;
   transform: translateY(-50%);
-  width: 30px; /* Default line length */
-  height: 1px; /* Line thickness */
-  background-color: #e2e8f0; /* Light grey line */
-  transition: width 0.3s ease, background-color 0.3s ease; /* Smooth line animation */
-}
-
-.custom-link:hover:before,
-.custom-link:focus:before {
-  width: 50px; /* Elongate line on hover/focus */
-  background-color: #d1dbe5; /* Slightly brighter line color on hover */
+  width: 30px;
+  height: 2px;
+  background-color: #e2e8f0;
+  transition: all 0.3s ease;
 }
 
 .custom-link:hover,
-.custom-link:focus {
-  font-size: 1.22rem; /* Slightly larger font size (2% increase) */
-  padding-left: 55px; /* Move text along with the elongating line */
-  color: #d1dbe5; /* Slightly brighter text color on hover */
+.custom-link:focus-visible {
+  color: #d1dbe5;
+  font-size: 1.1rem;
+  padding-left: 50px;
 }
 
-.custom-link:active:before {
-  width: 70px; /* Further elongate line on click */
+.custom-link:hover:before,
+.custom-link:focus-visible:before {
+  width: 50px;
   background-color: #d1dbe5;
 }
 
 .custom-link:active {
-  font-size: 1rem; /* Slightly larger font size (2% increase) */
-  padding-left: 70px; /* Move text further to match the line's elongation */
+  color: #d1dbe5;
 }
 
+footer {
+  margin-top: 100px; /* ⬅️ pushes the footer down */
+  text-align: center;
+}
+
+/* Footer Social Icons */
 .footer-icons {
   display: flex;
-  justify-content: center; /* Center the icons and links */
-  gap: 20px; /* Space between the links */
+  justify-content: center;
+  align-items: center;
+  gap: 30px; /* a little more breathing room */
+  padding: 20px 0;
+ /* optional: nice dark footer background */
 }
 
 .footer-icons a {
-  text-decoration: none; /* Remove underline from links */
-  font-size: 1rem; /* Default font size for link text */
-  color: #f0f4f8; /* Off-white color for text and icons */
-  display: flex; /* Use flexbox for stacking icon and text */
-  flex-direction: column; /* Stack icon above the text */
-  align-items: center; /* Center-align icon and text */
-  transition: color 0.3s ease; /* Smooth color transition on hover */
+  text-decoration: none;
+  color: #f0f4f8;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .footer-icons a:hover {
-  color: #d1dbe5; /* Slightly brighter color on hover */
+  color: #00ff99; /* light blue hover color */
+  transform: scale(1.2); /* small pop effect on hover */
 }
 
 .footer-icons i {
-  margin-top: 10px; /* Add spacing above the icon */
-  font-size: 2rem; /* Size of the icon */
-  line-height: 1; /* Ensure consistent alignment */
-  position: relative; /* Enable fine adjustments */
-  top: 0; /* Reset top position for consistency */
+  font-size: 2.2rem;
 }
+
