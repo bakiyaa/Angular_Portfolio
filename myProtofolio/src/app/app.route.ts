@@ -14,7 +14,6 @@ export enum  ROUTER_TOKENS{
   HOME = 'home',
   BLOG = 'blog',
   IMPOSSIBLE_LIST = 'impossible-list',
-  CV = 'cv',
   WORK = 'work',
   EXPERIENCE='experience',
   ABOUT='about',
@@ -63,10 +62,6 @@ export const routes: Routes = [
     {
       path: ROUTER_TOKENS.CONTACT,
       component: ContactComponent,
-    },
-    {
-      path: ROUTER_TOKENS.CV,
-      component: CvComponent,
     }
     //NotFoundComponent
 ];

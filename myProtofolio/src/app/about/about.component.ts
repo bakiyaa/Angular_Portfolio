@@ -8,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AboutComponent {
   resumeUrl: string = 'assets/resume.pdf';
+   logClick(){
+    console.log('Form Submitted:');
+  }
 }

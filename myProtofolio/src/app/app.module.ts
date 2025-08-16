@@ -1,4 +1,5 @@
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes, { enableTracing: true })
      // Import RouterModule with routes
   ],

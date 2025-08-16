@@ -1,1 +1,31 @@
-<p>Contact page works!</p>
+<div class="container">
+
+  <form [formGroup]="userform" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input id="firstName" formControlName="firstName" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input id="lastName" formControlName="lastName" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" class="form-control" />
+    </div>
+   <button type="submit" class="btn btn-primary">Submit</button>
+    <div *ngIf="userform.invalid && (userform.dirty || userform.touched)" class="alert alert-danger">
+      <div *ngIf="userform.errors?.['required']">All fields are required.</div>
+      <div *ngIf="userform.errors?.['email']">Please enter a valid email address.</div>
+    </div>
+    <div *ngIf="userform.valid && !userSubmitted" class="alert alert-success">
+      Form is valid and ready to submit!
+    </div>
+    <div *ngIf="userform.invalid && userform.touched" class="alert alert-warning">
+      Please fill out the form correctly.
+    </div>
+    <div *ngIf="userSubmitted" class="alert alert-info">
+      Form has been submitted successfully!
+    </div>
+    </form>
+</div>
