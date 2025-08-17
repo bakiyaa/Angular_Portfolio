@@ -17,12 +17,13 @@ import { AboutComponent } from "./about/about.component";
 import { ExperienceComponent } from "./experience/experience.component";
 import { ProjectsComponent } from "./projects/projects.component";
 import { BackgroundAnimationComponent } from "./background-animation/background-animation.component";
+import { HeaderComponent } from "./header/header.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [SidebarComponent, FooterComponent, RouterOutlet, LoadingComponent, CommonModule, AboutComponent, ExperienceComponent, ProjectsComponent, BackgroundAnimationComponent], // Fixed typo
+  imports: [SidebarComponent, FooterComponent, RouterOutlet, LoadingComponent, CommonModule, AboutComponent, ExperienceComponent, ProjectsComponent, BackgroundAnimationComponent, HeaderComponent], // Fixed typo
 })
 export class AppComponent implements OnInit {
 

@@ -67,7 +67,7 @@ export class BackgroundAnimationComponent implements AfterViewInit {
 
     function drawGalaxy() {
       const gradient = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, Math.max(width, height));
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0.9)');  // Dark outer edge
+      gradient.addColorStop(1, '#0B0C10');  // Dark outer edge
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
     }

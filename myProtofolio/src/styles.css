@@ -32,12 +32,15 @@ h1, h2 {
 
 p {
   font-size: 1rem;
-  color: #8f98b0;
+  color: #C5C6C7;
   line-height: 1.8;
 }
 
 a {
-  text-decoration: none; /* Removes underline by default */
+  text-decoration: none;
+  font-size: 1rem;
+  color: #C5C6C7;
+  line-height: 1.8; /* Removes underline by default */
 }
 
 a:hover,

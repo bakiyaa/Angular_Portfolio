@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
+closeMenu() {
+throw new Error('Method not implemented.');
+}
+ 
 }
