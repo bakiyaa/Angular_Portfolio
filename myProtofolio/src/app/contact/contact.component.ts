@@ -12,7 +12,6 @@ import { ReactiveFormsModule,FormBuilder, FormGroup, Validators } from '@angular
 })
 export class ContactComponent{
 
-
   userform: FormGroup;
   userSubmitted: any;
 

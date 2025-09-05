@@ -65,9 +65,47 @@ export class BackgroundAnimationComponent implements AfterViewInit {
       mouse.y = height / 2;
     });
 
+    
+function drawStars(count: number): void {
+  // Scattered stars
+  for (let i = 0; i < count; i++) {
+    const x = Math.random() * width;
+    const y = Math.random() * height;
+    const radius = Math.random() * 1.2;
+    const opacity = Math.random() * 0.6 + 0.4;
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+    ctx.fill();
+  }
+
+  // Milky Way arc (curved band of fixed stars)
+  const bandWidth = 100;
+  for (let i = 0; i < count / 2; i++) {
+    const x = Math.random() * width;
+    const y = height / 2 + Math.sin(x / width * Math.PI) * bandWidth * (Math.random() * 0.5 + 0.5);
+    const radius = Math.random() * 2;
+    const opacity = Math.random() * 0.5 + 0.5;
+
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+    ctx.fill();
+  }
+}
+
     function drawGalaxy() {
       const gradient = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, Math.max(width, height));
-      gradient.addColorStop(1, '#0B0C10');  // Dark outer edge
+      
+
+
+// Add space-themed color stops   // Deep space blue
+gradient.addColorStop(0.5, '#090A0F'); // Cosmic shadow
+gradient.addColorStop(1, '#000000');
+
+
+ // Dark outer edge
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
     }
